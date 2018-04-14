@@ -21,17 +21,49 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Comic Book Page</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			font-family: 'Open Sans', sans-serif;
+			background-color: #bebebe;
+		}
+		h3, h1 {
+			margin: 10px 0;
+		}
+		div {
+			margin: 10px 0;
+		}
+		.container {
+			width: 90%;
+			margin: 0 auto;
+		}
+		li {
+			list-style: none;
+		}
+	</style>
 </head>
 <body>
-    <div>
+    <div class="container">
 		<h1>@seriesTitle</h1>
 		<h2>Issue #@issueNumber</h2>
 
-		<h5>Description</h5>
+		<h3>Description</h3>
 		<div>@Html.Raw(description)</div>
 
-		<h5>Artists:</h5>
-		<div>@artists</div>
-    </div>
+		@if (artists.Length > 0)
+		{
+			<h3>Artists:</h3>
+			<div>
+				<ul>@foreach (var artist in artists)
+				{
+					<li>@artist</li>
+				}
+				</ul>
+			</div>
+		}
+    </div> <!-- .container -->
 </body>
 </html>
